@@ -45,7 +45,7 @@ CHECK Build requirements ABOVE
 
 ## Get help
 - GitHub issues (recommended): [Issues](https://github.com/Juxstin/EdXposed-SnapChat-Bypass/issues/)
-- My discord: https://discord.gg/R9mPKZe
+- My discord: [Join Discord](https://discord.gg/R9mPKZe)
 
 ## Contribute
 
