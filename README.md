@@ -61,4 +61,4 @@ CHECK Build requirements ABOVE
 - [dexmaker](https://github.com/linkedin/dexmaker) and [dalvikdx](https://github.com/JakeWharton/dalvik-dx): to dynamiclly generate YAHFA hooker classes
 - [Whale](https://github.com/asLody/whale): used for inline hooking
 - [SandHook](https://github.com/ganyao114/SandHook/): ART hooking framework for SandHook variant
-- [Justin](https://github.com/Juxstin): Bypassing ST detection
+- [Justin](https://github.com/Juxstin): Bypassing SC detection
