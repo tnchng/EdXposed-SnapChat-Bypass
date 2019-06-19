@@ -1,8 +1,8 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/qu3vj1d64nqia1b8/branch/master?svg=true)](https://ci.appveyor.com/project/ElderDrivers/edxposed/branch/master)
-
-# EdXposed
+# EdXposed-SnapChat-Bypass
 
 A Riru module trying to provide a ART hooking framework (initially for Android Pie) which delivers consistent APIs with the OG Xposed, leveraging YAHFA (or SandHook) hooking framework.
+
+w / anti sc bans
 
 ## Supported versions
 
@@ -34,12 +34,6 @@ CHECK Build requirements ABOVE
 4. Reboot.
 5. Have fun! :)
 
-## Companion applications
-
-- For v0.2.9.5 and before: [Xposed Installer](https://github.com/DVDAndroid/XposedInstaller).
-- For v0.2.9.6 and v0.2.9.7: [Xposed Installer](https://github.com/DVDAndroid/XposedInstaller) and [EdXp Manager](https://github.com/solohsu/EdXpManager)(optional).
-- For v0.2.9.8 and later: [EdXposed Installer](https://github.com/solohsu/XposedInstaller) and [EdXposed Manager](https://github.com/ElderDrivers/EdXposedManager).
-
 ## Useful links
 
 - [List of Xposed Modules For Android Pie Working With EdXposed](https://forum.xda-developers.com/xposed/list-xposed-modules-android-pie-ed-t3892768) (thanks to Uraniam9 @ xda-developers)
@@ -50,10 +44,9 @@ CHECK Build requirements ABOVE
 - File access services are not implemented yet, now EdXp simply uses magiskpolicy to enable needed SELinux policies.
 
 ## Get help
-
-- GitHub issues (recommended): [Issues](https://github.com/solohsu/EdXposed/issues/)
-- QQ Group: [855219808](http://shang.qq.com/wpa/qunwpa?idkey=fae42a3dba9dc758caf63e971be2564e67bf7edd751a2ff1c750478b0ad1ca3f)
+- GitHub issues (recommended): [Issues](https://github.com/Juxstin/EdXposed-SnapChat-Bypass/issues/)
 - My discord: https://discord.gg/R9mPKZe
+
 ## Contribute
 
 - Apparently this framework is far from stable and all kinds of PRs are welcome. :)
