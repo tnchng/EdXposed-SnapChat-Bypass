@@ -5,11 +5,10 @@ import android.app.LoadedApk;
 import android.content.ComponentName;
 import android.content.pm.ApplicationInfo;
 import android.content.res.CompatibilityInfo;
+import android.content.res.XResources;
 
 import com.elderdrivers.riru.edxp.config.ConfigManager;
-import com.elderdrivers.riru.edxp.hooker.SliceProviderFix;
 import com.elderdrivers.riru.edxp.hooker.XposedBlackListHooker;
-import com.elderdrivers.riru.edxp.hooker.XposedInstallerHooker;
 import com.elderdrivers.riru.edxp.util.Hookers;
 import com.elderdrivers.riru.edxp.util.Utils;
 
@@ -17,11 +16,6 @@ import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.XposedInit;
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
-
-import static com.elderdrivers.riru.edxp.config.InstallerChooser.INSTALLER_PACKAGE_NAME;
-import static com.elderdrivers.riru.edxp.hooker.SliceProviderFix.SYSTEMUI_PACKAGE_NAME;
-import static com.elderdrivers.riru.edxp.hooker.XposedBlackListHooker.BLACK_LIST_PACKAGE_NAME;
 
 // normal process initialization (for new Activity, Service, BroadcastReceiver etc.)
 public class HandleBindApp extends XC_MethodHook {
@@ -61,23 +55,15 @@ public class HandleBindApp extends XC_MethodHook {
             XposedInit.loadedPackagesInProcess.add(reportedPackageName);
             LoadedApk loadedApk = activityThread.getPackageInfoNoCheck(appInfo, compatInfo);
 
-            XC_LoadPackage.LoadPackageParam lpparam = new XC_LoadPackage.LoadPackageParam(XposedBridge.sLoadedPackageCallbacks);
-            lpparam.packageName = reportedPackageName;
-            lpparam.processName = (String) XposedHelpers.getObjectField(bindData, "processName");
-            lpparam.classLoader = loadedApk.getClassLoader();
-            lpparam.appInfo = appInfo;
-            lpparam.isFirstApplication = true;
-            XC_LoadPackage.callAll(lpparam);
+            XResources.setPackageNameForResDir(appInfo.packageName, loadedApk.getResDir());
 
-            if (reportedPackageName.equals(INSTALLER_PACKAGE_NAME)) {
-                XposedInstallerHooker.hookXposedInstaller(lpparam.classLoader);
-            }
-            if (reportedPackageName.equals(BLACK_LIST_PACKAGE_NAME)) {
-                XposedBlackListHooker.hook(lpparam.classLoader);
-            }
-            if (reportedPackageName.equals(SYSTEMUI_PACKAGE_NAME)) {
-                SliceProviderFix.hook();
-            }
+            String processName = (String) XposedHelpers.getObjectField(bindData, "processName");
+
+            LoadedApkGetCL hook = new LoadedApkGetCL(loadedApk, reportedPackageName,
+                    processName, true);
+            hook.setUnhook(XposedHelpers.findAndHookMethod(
+                    LoadedApk.class, "getClassLoader", hook));
+
         } catch (Throwable t) {
             Hookers.logE("error when hooking bindApp", t);
         }
