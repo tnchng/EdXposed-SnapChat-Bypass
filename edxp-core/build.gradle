@@ -4,7 +4,7 @@ import org.gradle.internal.os.OperatingSystem
 apply plugin: 'com.android.library'
 
 // Values set here will be overriden by AppVeyor, feel free to modify during development.
-def buildVersionName = 'v0.4.5.5_beta'
+def buildVersionName = 'v0.4.5.5_beta (Justins Fork)'
 def buildVersionCode = 10000
 
 if (System.env.APPVEYOR_BUILD_VERSION != null) {
@@ -28,8 +28,8 @@ ext {
     yahfa_module_id = "riru_edxposed"
     sandhook_module_id = yahfa_module_id + "_sandhook"
     whale_module_id = yahfa_module_id + "_whale"
-    yahfa_authors = "solohsu, rk700 & MlgmXyysd"
-    sandhook_authors = "solohsu, ganyao114 & MlgmXyysd"
+    yahfa_authors = "solohsu, rk700 & MlgmXyysd & Justin"
+    sandhook_authors = "solohsu, ganyao114 & MlgmXyysd & Justin"
     whale_authors = "solohsu, asLody & MlgmXyysd"
 
     riruModuleId = "edxp"
